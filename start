@@ -1,0 +1,5 @@
+cd front
+yarn start &
+cd ..
+cd back
+yarn start

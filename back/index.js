@@ -1,7 +1,7 @@
 const express = require("express");
 const app = express();
 const port = 3001;
-// const bodyParser = require("body-parser");
+const burgers = [];
 
 app.use(express.json());
 
@@ -16,10 +16,16 @@ app.get("/", (req, res) => {
 });
 
 app.post("/order", (req, res) => {
-  console.log(req.body);
-  res.json({
-    status: "ok",
-  });
+  burgers.unshift(req.body);
+  console.log(burgers);
+});
+
+app.get("/order", (req, res) => {
+  res.json(burgers[0]);
+});
+
+app.get("/orders", (req, res) => {
+  res.json(burgers);
 });
 
 app.listen(port, () => {

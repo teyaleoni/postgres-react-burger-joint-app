@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { Receipt } from "../src/components/Receipt";
+import { AllReceipts } from "../src/components/AllReceipts";
 import "./App.scss";
 
 function App() {
@@ -9,7 +11,8 @@ function App() {
   const [onions, setOnions] = useState(false);
   const [patty, setPatty] = useState(false);
   const [condiments, setCondiments] = useState(false);
-  const [getReceipt, setGetReceipt] = useState(null);
+  const [receipt, setReceipt] = useState(null);
+  const [allReceipts, setAllReceipts] = useState(null);
 
   const onSubmit = async () => {
     await fetch("http://localhost:3001/order", {
@@ -37,7 +40,7 @@ function App() {
       },
     });
     const body = await res.json();
-    setGetReceipt(body);
+    setReceipt(body);
     console.log(body);
   };
 
@@ -49,6 +52,7 @@ function App() {
       },
     });
     const body = await res.json();
+    setAllReceipts(body);
     console.log(body);
   };
 
@@ -61,7 +65,7 @@ function App() {
           <label>Bun</label>
           <input
             type="checkbox"
-            value={bun}
+            checked={bun}
             onChange={(e) => setBun(e.target.checked)}
           ></input>
         </div>
@@ -69,7 +73,7 @@ function App() {
           <label>Cheese</label>
           <input
             type="checkbox"
-            value={cheese}
+            checked={cheese}
             onChange={(e) => setCheese(e.target.checked)}
           ></input>
         </div>
@@ -77,7 +81,7 @@ function App() {
           <label>Lettuce</label>
           <input
             type="checkbox"
-            value={lettuce}
+            checked={lettuce}
             onChange={(e) => setLettuce(e.target.checked)}
           ></input>
         </div>
@@ -85,7 +89,7 @@ function App() {
           <label>Tomato</label>
           <input
             type="checkbox"
-            value={tomato}
+            checked={tomato}
             onChange={(e) => setTomato(e.target.checked)}
           ></input>
         </div>
@@ -93,7 +97,7 @@ function App() {
           <label>Onions</label>
           <input
             type="checkbox"
-            value={onions}
+            checked={onions}
             onChange={(e) => setOnions(e.target.checked)}
           ></input>
         </div>
@@ -101,7 +105,7 @@ function App() {
           <label>Patty</label>
           <input
             type="checkbox"
-            value={patty}
+            checked={patty}
             onChange={(e) => setPatty(e.target.checked)}
           ></input>
         </div>
@@ -109,7 +113,7 @@ function App() {
           <label>Condiments</label>
           <input
             type="checkbox"
-            value={condiments}
+            checked={condiments}
             onChange={(e) => setCondiments(e.target.checked)}
           ></input>
         </div>
@@ -118,11 +122,27 @@ function App() {
         </div>
         <div>
           <button onClick={onSubmitReceipt}>Get Receipt</button>
-          <div>{getReceipt && JSON.stringify(getReceipt)}</div>
+          {/* <div>{getReceipt && JSON.stringify(getReceipt)}</div> */}
+          <div>
+            <Receipt
+              order={receipt}
+              onClose={() => {
+                setReceipt(null);
+              }}
+            />
+          </div>
         </div>
         <div>
           <div>
             <button onClick={onSubmitAllReceipts}>Past Receipts</button>
+            <div>
+              <AllReceipts
+                orders={allReceipts}
+                onClose={() => {
+                  setAllReceipts(null);
+                }}
+              />
+            </div>
           </div>
         </div>
       </div>

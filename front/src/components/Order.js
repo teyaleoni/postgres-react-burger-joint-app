@@ -4,7 +4,7 @@ import React from "react";
 export function Order(props) {
   let order = props.order;
 
-  if (order === null) {
+  if (order == null) {
     return null;
   }
 

@@ -18,6 +18,7 @@ app.get("/", (req, res) => {
 app.post("/order", (req, res) => {
   burgers.unshift(req.body);
   console.log(burgers);
+  res.json({ status: "good" });
 });
 
 app.get("/order", (req, res) => {

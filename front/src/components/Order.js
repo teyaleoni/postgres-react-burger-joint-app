@@ -13,31 +13,31 @@ export function Order(props) {
       <h1>{props.title}</h1>
       <div>
         <label>Bun</label>
-        <input type="checkbox" checked={order.bun}></input>
+        <input type="checkbox" readOnly checked={order.bun}></input>
       </div>
       <div>
         <label>Cheese</label>
-        <input type="checkbox" checked={order.cheese}></input>
+        <input type="checkbox" readOnly checked={order.cheese}></input>
       </div>
       <div>
         <label>Lettuce</label>
-        <input type="checkbox" checked={order.lettuce}></input>
+        <input type="checkbox" readOnly checked={order.lettuce}></input>
       </div>
       <div>
         <label>Tomato</label>
-        <input type="checkbox" checked={order.tomato}></input>
+        <input type="checkbox" readOnly checked={order.tomato}></input>
       </div>
       <div>
         <label>Onions</label>
-        <input type="checkbox" checked={order.onions}></input>
+        <input type="checkbox" readOnly checked={order.onions}></input>
       </div>
       <div>
         <label>Patty</label>
-        <input type="checkbox" checked={order.patty}></input>
+        <input type="checkbox" readOnly checked={order.patty}></input>
       </div>
       <div>
         <label>Condiments</label>
-        <input type="checkbox" checked={order.condiments}></input>
+        <input type="checkbox" readOnly checked={order.condiments}></input>
       </div>
     </div>
   );

@@ -14,6 +14,16 @@ function App() {
   const [receipt, setReceipt] = useState(null);
   const [allReceipts, setAllReceipts] = useState(null);
 
+  const reset = () => {
+    setBun(false);
+    setLettuce(false);
+    setTomato(false);
+    setCheese(false);
+    setOnions(false);
+    setPatty(false);
+    setCondiments(false);
+  };
+
   const onSubmit = async () => {
     await fetch("http://localhost:3001/order", {
       method: "POST",
@@ -30,6 +40,8 @@ function App() {
         condiments: condiments,
       }),
     });
+
+    reset();
   };
 
   const onSubmitReceipt = async () => {
